@@ -9,7 +9,7 @@
 
 namespace CollectionJson\Collection;
 
-class Item
+interface AttrInterface
 {
-
+    public function __toArray();
 }

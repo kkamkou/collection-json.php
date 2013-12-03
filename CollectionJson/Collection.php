@@ -1,4 +1,19 @@
 <?php
+/**
+ * Licensed under the MIT License
+ *
+ * @author   Kanstantsin A Kamkou (2ka.by)
+ * @license  http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @link     https://github.com/kkamkou/collection-json.php
+ */
+
+/**
+ * Specification:
+ *  @link http://amundsen.com/media-types/collection/
+ *
+ * Discussion Group:
+ *  @link https://groups.google.com/forum/?fromgroups#!forum/collectionjson
+ */
 
 namespace CollectionJson;
 
@@ -8,37 +23,33 @@ class Collection
     protected $version = '1.0';
 
     /** @var string */
-    protected $href = null;
+    protected $href;
 
-    /** @var array of Link */
+    /** @var array of Collection\Link */
     protected $links = array();
 
-    /** @var array of Item */
+    /** @var array of Collection\Item */
     protected $items = array();
 
-    /** @var array of Query */
+    /** @var array of Collection\Query */
     protected $queries = array();
 
-    /** @var Template */
-    protected $template = null;
+    /** @var Collection\Template */
+    protected $template;
 
-    /** @var Error */
-    protected $error = null;
-
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    public function getHref()
-    {
-        return $this->href;
-    }
+    /** @var Collection\Error */
+    protected $error;
 
     public function setVersion($version)
     {
         $this->version = $version;
         return $this;
+    }
+
+    /** @return string */
+    public function getVersion()
+    {
+        return $this->version;
     }
 
     public function setHref($href)
@@ -47,31 +58,37 @@ class Collection
         return $this;
     }
 
-    public function setTemplate(Template $tpl)
+    /** @return string */
+    public function getHref()
+    {
+        return $this->href;
+    }
+
+    public function setTemplate(Collection\Template $tpl)
     {
         $this->tpl = $tpl;
         return $this;
     }
 
-    public function setError(Error $err)
+    public function setError(Collection\Error $err)
     {
         $this->error = $err;
         return $this;
     }
 
-    public function addLink(Link $link)
+    public function addLink(Collection\Link $link)
     {
         $this->links[] = $link;
         return $this;
     }
 
-    public function addItem(Item $item)
+    public function addItem(Collection\Item $item)
     {
         $this->items[] = $item;
         return $this;
     }
 
-    public function addQuery(Query $query)
+    public function addQuery(Collection\Query $query)
     {
         $this->queries[] = $query;
         return $this;
@@ -94,6 +111,11 @@ class Collection
             'version' => $this->getVersion(),
             'href' => $this->getHref()
         );
+
+        // we have an error object
+        if ($this->error) {
+            $collection['error'] = $this->error->__toArray();
+        }
 
         // encoding data
         return json_encode(array('collection' => $collection));
