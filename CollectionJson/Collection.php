@@ -66,7 +66,7 @@ class Collection
 
     public function setTemplate(Collection\Template $tpl)
     {
-        $this->tpl = $tpl;
+        $this->template = $tpl;
         return $this;
     }
 
@@ -115,6 +115,11 @@ class Collection
         // we have an error object
         if ($this->error) {
             $collection['error'] = $this->error->__toArray();
+        }
+
+        // we have a template object
+        if ($this->template) {
+            $collection['template'] = $this->template->__toArray();
         }
 
         // encoding data

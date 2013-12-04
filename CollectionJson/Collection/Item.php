@@ -9,7 +9,11 @@
 
 namespace CollectionJson\Collection;
 
-class Item
-{
+use CollectionJson\Interfaces\ArrayConvertible;
 
+class Item implements ArrayConvertible
+{
+    public function __toArray()
+    {
+    }
 }

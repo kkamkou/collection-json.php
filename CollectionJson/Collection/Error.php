@@ -9,7 +9,9 @@
 
 namespace CollectionJson\Collection;
 
-class Error implements AttrInterface
+use CollectionJson\Interfaces\ArrayConvertible;
+
+class Error implements ArrayConvertible
 {
     /** @var string */
     protected $title;

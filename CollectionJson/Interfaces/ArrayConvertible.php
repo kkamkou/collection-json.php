@@ -7,9 +7,9 @@
  * @link     https://github.com/kkamkou/collection-json.php
  */
 
-namespace CollectionJson\Collection;
+namespace CollectionJson\Interfaces;
 
-interface AttrInterface
+interface ArrayConvertible
 {
     public function __toArray();
 }
