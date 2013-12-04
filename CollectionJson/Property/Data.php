@@ -11,6 +11,11 @@ namespace CollectionJson\Property;
 
 use CollectionJson\Interfaces\ArrayConvertible;
 
+/**
+ * Class Data
+ *
+ * @package CollectionJson\Property
+ */
 class Data implements ArrayConvertible
 {
     /** @var string */
@@ -87,12 +92,9 @@ class Data implements ArrayConvertible
     /** @return array */
     public function __toArray()
     {
-        return array_filter(
-            array(
-                'name' => $this->getName(),
-                'value' => $this->getValue(),
-                'prompt' => $this->getPrompt()
-            ),
+        $required = array('name' => $this->getName());
+        return $required + array_filter(
+            array('value' => $this->getValue(), 'prompt' => $this->getPrompt()),
             function ($val) {
                 return ($val !== null);
             }

@@ -122,6 +122,13 @@ class Collection
             $collection['template'] = $this->template->__toArray();
         }
 
+        // we have an item object
+        if (count($this->items)) {
+            foreach ($this->items as $item) {
+                $collection['items'][] = $item->__toArray();
+            }
+        }
+
         // encoding data
         return json_encode(array('collection' => $collection));
     }

@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../CollectionJson/Interfaces/ArrayConvertible.php';
 require __DIR__ . '/../CollectionJson/Property/Data.php';
+require __DIR__ . '/../CollectionJson/Property/Link.php';
 require __DIR__ . '/../CollectionJson/Collection/Error.php';
 require __DIR__ . '/../CollectionJson/Collection/Item.php';
 require __DIR__ . '/../CollectionJson/Collection/Template.php';
@@ -9,7 +10,9 @@ require __DIR__ . '/../CollectionJson/Collection.php';
 use \CollectionJson\Collection;
 use \CollectionJson\Collection\Template;
 use \CollectionJson\Collection\Error;
+use \CollectionJson\Collection\Item;
 use \CollectionJson\Property\Data;
+use \CollectionJson\Property\Link;
 
 class CollectionTest extends PHPUnit_Framework_TestCase
 {
@@ -24,6 +27,19 @@ class CollectionTest extends PHPUnit_Framework_TestCase
 
         $collection = new Collection();
         $collection->setTemplate($template);
+    }
+
+    public function testItems()
+    {
+        $data = new Data('firstName', 'PHPUnit', 'Full name');
+        $link = new Link('http://example.com', 'something', 'Strange link', 'link', 'Some link');
+
+        $item = new Item('http://example.com/item');
+        $item->addData($data)->addData($data);
+        $item->addLink($link)->addLink($link);
+
+        $collection = new Collection();
+        $collection->addItem($item);
 
         echo $collection;
     }

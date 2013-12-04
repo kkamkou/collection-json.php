@@ -9,9 +9,14 @@
 
 namespace CollectionJson\Collection;
 
-use CollectionJson\Property\Data;
 use CollectionJson\Interfaces\ArrayConvertible;
+use CollectionJson\Property\Data;
 
+/**
+ * Class Template
+ *
+ * @package CollectionJson\Collection
+ */
 class Template implements ArrayConvertible
 {
     /** @var array of Property\Data */
