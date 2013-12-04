@@ -1,0 +1,27 @@
+{
+  "name": "kkamkou/collection-json.php",
+  "description": "PHP implementation of the Collection+JSON",
+  "type": "library",
+  "homepage": "http://github.com/kkamkou/collection-json.php",
+  "license": "MIT",
+  "keywords": [
+    "collection+json",
+    "rest",
+    "api",
+    "json"
+  ],
+  "authors": [
+    {
+      "name": "Kanstantsin Kamkou",
+      "email": "kkamkou@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3"
+  },
+  "autoload": {
+    "psr-0": {
+      "CollectionJson": "/"
+    }
+  }
+}
