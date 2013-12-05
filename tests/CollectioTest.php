@@ -25,7 +25,7 @@ class CollectionTest extends PHPUnit_Framework_TestCase
 
         $template = new Template($datas);
 
-        $collection = new Collection();
+        $collection = new Collection('http://example.com');
         $collection->setTemplate($template);
     }
 
@@ -38,7 +38,7 @@ class CollectionTest extends PHPUnit_Framework_TestCase
         $item->addData($data)->addData($data);
         $item->addLink($link)->addLink($link);
 
-        $collection = new Collection();
+        $collection = new Collection('http://example.com');
         $collection->addItem($item);
 
         echo $collection;
@@ -47,7 +47,7 @@ class CollectionTest extends PHPUnit_Framework_TestCase
     public function testError()
     {
         $error = new Error('An error', '0x00000001', 'Blue Screen');
-        $collection = new Collection();
+        $collection = new Collection('http://example.com');
         $collection->setError($error);
         $output = json_decode($collection, true);
         $this->assertEquals($output['collection']['error'], $error->__toArray());

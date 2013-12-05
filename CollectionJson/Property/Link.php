@@ -146,7 +146,7 @@ class Link implements ArrayConvertible
             array(
                 'prompt' => $this->getPrompt(),
                 'name' => $this->getName(),
-                'render' => $this->getName()
+                'render' => $this->getRender()
             ),
             function ($val) {
                 return ($val !== null);
