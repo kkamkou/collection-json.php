@@ -17,6 +17,11 @@
 
 namespace CollectionJson;
 
+/**
+ * Class Collection
+ *
+ * @package CollectionJson
+ */
 class Collection
 {
     /** @var string */
@@ -40,6 +45,20 @@ class Collection
     /** @var Collection\Error */
     protected $error;
 
+    /**
+     * Constructor
+     *
+     * @param string $href
+     */
+    public function __construct($href)
+    {
+        $this->setHref($href);
+    }
+
+    /**
+     * @param string $version
+     * @return $this
+     */
     public function setVersion($version)
     {
         $this->version = $version;
@@ -52,6 +71,10 @@ class Collection
         return $this->version;
     }
 
+    /**
+     * @param string $href
+     * @return $this
+     */
     public function setHref($href)
     {
         $this->href = $href;
@@ -64,41 +87,68 @@ class Collection
         return $this->href;
     }
 
+    /**
+     * @param Collection\Template $tpl
+     * @return $this
+     */
     public function setTemplate(Collection\Template $tpl)
     {
         $this->template = $tpl;
         return $this;
     }
 
+    /**
+     * @param Collection\Error $err
+     * @return $this
+     */
     public function setError(Collection\Error $err)
     {
         $this->error = $err;
         return $this;
     }
 
+    /**
+     * @param Collection\Link $link
+     * @return $this
+     */
     public function addLink(Collection\Link $link)
     {
         $this->links[] = $link;
         return $this;
     }
 
+    /**
+     * @param Collection\Item $item
+     * @return $this
+     */
     public function addItem(Collection\Item $item)
     {
         $this->items[] = $item;
         return $this;
     }
 
+    /**
+     * @param Collection\Query $query
+     * @return $this
+     */
     public function addQuery(Collection\Query $query)
     {
         $this->queries[] = $query;
         return $this;
     }
 
+    /** @return string */
     public function __toString()
     {
         return $this->encode();
     }
 
+    /**
+     * Converts the whole object to a string
+     *
+     * @return string
+     * @throws \RuntimeException if json extension is not found
+     */
     protected function encode()
     {
         // extension validation

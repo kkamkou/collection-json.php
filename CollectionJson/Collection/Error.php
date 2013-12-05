@@ -11,6 +11,11 @@ namespace CollectionJson\Collection;
 
 use CollectionJson\Interfaces\ArrayConvertible;
 
+/**
+ * Class Error
+ *
+ * @package CollectionJson\Collection
+ */
 class Error implements ArrayConvertible
 {
     /** @var string */
