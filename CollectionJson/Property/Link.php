@@ -42,7 +42,7 @@ class Link implements ArrayConvertible
      * @param string $render (Default: null)
      * @param string $prompt (Default: null)
      */
-    public function __construct($href, $rel, $name = null, $render = 'link', $prompt = null)
+    public function __construct($href, $rel, $name = null, $render = null, $prompt = null)
     {
         $this->setHref($href)
             ->setRel($rel)
@@ -122,7 +122,7 @@ class Link implements ArrayConvertible
      */
     public function setRender($render)
     {
-        if (!in_array($render, array('image', 'link'))) {
+        if (null !== $render && !in_array($render, array('image', 'link'))) {
             throw new \InvalidArgumentException(
                 "The '{$render}' render type is invalid. Accepted: image, link"
             );
