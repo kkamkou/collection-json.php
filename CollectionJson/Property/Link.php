@@ -42,7 +42,7 @@ class Link implements ArrayConvertible
      * @param string $render (Default: null)
      * @param string $prompt (Default: null)
      */
-    public function __construct($href, $rel, $name = null, $render = null, $prompt = null)
+    public function __construct($href, $rel, $name = null, $render = 'link', $prompt = null)
     {
         $this->setHref($href)
             ->setRel($rel)

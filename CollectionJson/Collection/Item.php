@@ -130,13 +130,13 @@ class Item implements ArrayConvertible
         $return = array('href' => $this->getHref());
 
         if (count($this->data)) {
-            foreach ($this->data as $data) {
+            foreach ($this->getData() as $data) {
                 $return['data'][] = $data->__toArray();
             }
         }
 
         if (count($this->links)) {
-            foreach ($this->links as $link) {
+            foreach ($this->getLinks() as $link) {
                 $return['links'][] = $link->__toArray();
             }
         }
