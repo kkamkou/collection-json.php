@@ -1,11 +1,4 @@
 <?php
-require __DIR__ . '/../CollectionJson/Interfaces/ArrayConvertible.php';
-require __DIR__ . '/../CollectionJson/Property/Data.php';
-require __DIR__ . '/../CollectionJson/Property/Link.php';
-require __DIR__ . '/../CollectionJson/Collection/Error.php';
-require __DIR__ . '/../CollectionJson/Collection/Item.php';
-require __DIR__ . '/../CollectionJson/Collection/Template.php';
-require __DIR__ . '/../CollectionJson/Collection.php';
 
 use \CollectionJson\Collection;
 use \CollectionJson\Collection\Template;
@@ -41,7 +34,6 @@ class CollectionTest extends PHPUnit_Framework_TestCase
         $collection = new Collection('http://example.com');
         $collection->addItem($item);
 
-        echo $collection;
     }
 
     public function testError()
