@@ -1,5 +1,6 @@
 {
   "name": "kkamkou/collection-json.php",
+  "version": "1.0.0",
   "description": "PHP implementation of the Collection+JSON",
   "type": "library",
   "homepage": "http://github.com/kkamkou/collection-json.php",

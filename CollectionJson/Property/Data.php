@@ -86,7 +86,7 @@ class Data implements ArrayConvertible
     /** @return mixed */
     public function getValue()
     {
-        return $this->value;
+        return (null === $this->value) ? '' : $this->value;
     }
 
     /** @return array */

@@ -31,7 +31,7 @@ class DataTest extends \PHPUnit_Framework_TestCase
     {
         $obj = new CollectionJson\Property\Data('fieldName');
         $result = $obj->__toArray();
-        foreach (array('value', 'prompt') as $key) {
+        foreach (array('prompt') as $key) {
             $this->assertFalse(array_key_exists($key, $result));
         }
     }

@@ -17,12 +17,14 @@
 
 namespace CollectionJson;
 
+use CollectionJson\Interfaces\ArrayConvertible;
+
 /**
  * Class Collection
  *
  * @package CollectionJson
  */
-class Collection
+class Collection implements ArrayConvertible
 {
     /** @var string */
     protected $version = '1.0';
@@ -49,9 +51,15 @@ class Collection
      * Constructor
      *
      * @param string $href
+     * @throws \RuntimeException if json extension is not found
      */
     public function __construct($href)
     {
+        // extension validation
+        if (!extension_loaded('json')) {
+            throw new \RuntimeException('the json extension is required for this library');
+        }
+
         $this->setHref($href);
     }
 
@@ -108,12 +116,36 @@ class Collection
     }
 
     /**
-     * @param Collection\Link $link
+     * @param array $linkSet
      * @return $this
      */
-    public function addLink(Collection\Link $link)
+    public function addLinkSet(array $linkSet)
+    {
+        foreach ($linkSet as $link) {
+            $this->addLink($link);
+        }
+        return $this;
+    }
+
+    /**
+     * @param Property\Link $link
+     * @return $this
+     */
+    public function addLink(Property\Link $link)
     {
         $this->links[] = $link;
+        return $this;
+    }
+
+    /**
+     * @param array $itemSet
+     * @return $this
+     */
+    public function addItemSet(array $itemSet)
+    {
+        foreach ($itemSet as $item) {
+            $this->addItem($item);
+        }
         return $this;
     }
 
@@ -128,10 +160,22 @@ class Collection
     }
 
     /**
-     * @param Collection\Query $query
+     * @param array $querySet
      * @return $this
      */
-    public function addQuery(Collection\Query $query)
+    public function addQuerySet(array $querySet)
+    {
+        foreach ($querySet as $query) {
+            $this->addQuery($query);
+        }
+        return $this;
+    }
+
+    /**
+     * @param Property\Query $query
+     * @return $this
+     */
+    public function addQuery(Property\Query $query)
     {
         $this->queries[] = $query;
         return $this;
@@ -140,22 +184,16 @@ class Collection
     /** @return string */
     public function __toString()
     {
-        return $this->encode();
+        return json_encode($this->__toArray());
     }
 
     /**
      * Converts the whole object to a string
      *
-     * @return string
-     * @throws \RuntimeException if json extension is not found
+     * @return array
      */
-    protected function encode()
+    public function __toArray()
     {
-        // extension validation
-        if (!extension_loaded('json')) {
-            throw new \RuntimeException('the json extension is required for this library');
-        }
-
         // defaults
         $collection = array(
             'version' => $this->getVersion(),
@@ -169,17 +207,19 @@ class Collection
 
         // we have a template object
         if ($this->template) {
-            $collection['template'] = $this->template->__toArray();
+            $collection = array_merge($collection, $this->template->__toArray());
         }
 
-        // we have an item object
-        if (count($this->items)) {
-            foreach ($this->items as $item) {
-                $collection['items'][] = $item->__toArray();
+        // we have some other objects
+        foreach (array('items', 'queries', 'links') as $type) {
+            if (count($this->{$type})) {
+                foreach ($this->{$type} as $item) {
+                    $collection[$type][] = $item->__toArray();
+                }
             }
         }
 
         // encoding data
-        return json_encode(array('collection' => $collection));
+        return array('collection' => $collection);
     }
 }

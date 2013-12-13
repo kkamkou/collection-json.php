@@ -67,9 +67,9 @@ class Template implements ArrayConvertible
     /** @return array */
     public function __toArray()
     {
-        $return = array('data' => array());
+        $return = array('template' => array('data' => array()));
         foreach ($this->getData() as $data) {
-            $return['data'][] = $data->__toArray();
+            $return['template']['data'][] = $data->__toArray();
         }
         return $return;
     }
