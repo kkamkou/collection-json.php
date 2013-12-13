@@ -6,6 +6,8 @@ PHP implementation of the Collection+JSON [specification](http://amundsen.com/me
 Examples of media type in use [can be found here](http://amundsen.com/media-types/collection/examples/).
 
 ## Example
+More examples are located in the ```CollectioTest.php``` test file
+
 ```php
 use \CollectionJson\Collection;
 use \CollectionJson\Property;
@@ -23,7 +25,7 @@ echo $collection;
 ```
 
 ## Tests
-```
+```sh
 phpcs --standard=psr2 CollectionJson
 cd tests
 phpunit ./

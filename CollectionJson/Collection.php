@@ -188,7 +188,7 @@ class Collection implements ArrayConvertible
     }
 
     /**
-     * Converts the whole object to a string
+     * Converts the whole object to an array
      *
      * @return array
      */
