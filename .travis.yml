@@ -1,0 +1,7 @@
+script: phpunit --configuration tests/phpunit.xml tests
+language: php
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+
