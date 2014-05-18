@@ -1,7 +1,7 @@
 Collection+JSON
 ===================
 
-![Build Status](https://travis-ci.org/kkamkou/collection-json.php.svg?branch=master)]
+![Build Status](https://travis-ci.org/kkamkou/collection-json.php.svg?branch=master)
 
 PHP implementation of the Collection+JSON [specification](http://amundsen.com/media-types/collection/format/)
 
