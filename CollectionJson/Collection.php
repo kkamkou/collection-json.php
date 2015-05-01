@@ -184,7 +184,7 @@ class Collection implements ArrayConvertible
     /** @return string */
     public function __toString()
     {
-        return json_encode($this->__toArray());
+        return json_encode($this->toArray());
     }
 
     /**
@@ -192,7 +192,7 @@ class Collection implements ArrayConvertible
      *
      * @return array
      */
-    public function __toArray()
+    public function toArray()
     {
         // defaults
         $collection = array(
@@ -202,19 +202,19 @@ class Collection implements ArrayConvertible
 
         // we have an error object
         if ($this->error) {
-            $collection['error'] = $this->error->__toArray();
+            $collection['error'] = $this->error->toArray();
         }
 
         // we have a template object
         if ($this->template) {
-            $collection = array_merge($collection, $this->template->__toArray());
+            $collection = array_merge($collection, $this->template->toArray());
         }
 
         // we have some other objects
         foreach (array('items', 'queries', 'links') as $type) {
             if (count($this->{$type})) {
                 foreach ($this->{$type} as $item) {
-                    $collection[$type][] = $item->__toArray();
+                    $collection[$type][] = $item->toArray();
                 }
             }
         }

@@ -90,7 +90,7 @@ class Error implements ArrayConvertible
     }
 
     /** @return array */
-    public function __toArray()
+    public function toArray()
     {
         return array_filter(
             array(

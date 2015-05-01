@@ -26,6 +26,13 @@ $collection->addItem($item);
 echo $collection;
 ```
 
+## Docker
+```sh
+[sudo] docker build .
+[sudo] docker run -v "`pwd`":/opt/collection-json.php IMAGE_ID phpcs --standard=psr2 CollectionJson
+[sudo] docker run -v "`pwd`":/opt/collection-json.php IMAGE_ID phpunit -c tests/phpunit.xml ./
+```
+
 ## Tests
 ```sh
 phpcs --standard=psr2 CollectionJson

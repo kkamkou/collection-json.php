@@ -125,19 +125,19 @@ class Item implements ArrayConvertible
     }
 
     /** @return array */
-    public function __toArray()
+    public function toArray()
     {
         $return = array('href' => $this->getHref());
 
         if (count($this->data)) {
             foreach ($this->getData() as $data) {
-                $return['data'][] = $data->__toArray();
+                $return['data'][] = $data->toArray();
             }
         }
 
         if (count($this->links)) {
             foreach ($this->getLinks() as $link) {
-                $return['links'][] = $link->__toArray();
+                $return['links'][] = $link->toArray();
             }
         }
 

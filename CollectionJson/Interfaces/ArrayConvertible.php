@@ -11,5 +11,5 @@ namespace CollectionJson\Interfaces;
 
 interface ArrayConvertible
 {
-    public function __toArray();
+    public function toArray();
 }

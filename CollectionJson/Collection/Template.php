@@ -24,7 +24,7 @@ class Template implements ArrayConvertible
 
     /**
      * Constructor
-     * 
+     *
      * @param array $setWithData
      */
     public function __construct(array $setWithData = array())
@@ -65,11 +65,11 @@ class Template implements ArrayConvertible
     }
 
     /** @return array */
-    public function __toArray()
+    public function toArray()
     {
         $return = array('template' => array('data' => array()));
         foreach ($this->getData() as $data) {
-            $return['template']['data'][] = $data->__toArray();
+            $return['template']['data'][] = $data->toArray();
         }
         return $return;
     }

@@ -149,7 +149,7 @@ class CollectionTest extends PHPUnit_Framework_TestCase
         $collection = new Collection('http://example.com');
         $collection->setError($error);
         $output = json_decode($collection, true);
-        $this->assertEquals($output['collection']['error'], $error->__toArray());
+        $this->assertEquals($output['collection']['error'], $error->toArray());
 
         $collection->setError(new Collection\Error('An error'));
         $output = json_decode($collection, true);
@@ -160,6 +160,6 @@ class CollectionTest extends PHPUnit_Framework_TestCase
     {
         $json = file_get_contents(__DIR__ . "/_fixtures/{$name}.json");
         $json = json_decode($json, true);
-        $this->assertEquals($json, $mixed->__toArray());
+        $this->assertEquals($json, $mixed->toArray());
     }
 }
