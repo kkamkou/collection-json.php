@@ -55,11 +55,6 @@ class Collection implements ArrayConvertible
      */
     public function __construct($href)
     {
-        // extension validation
-        if (!extension_loaded('json')) {
-            throw new \RuntimeException('the json extension is required for this library');
-        }
-
         $this->setHref($href);
     }
 

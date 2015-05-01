@@ -5,6 +5,34 @@ use \CollectionJson\Property;
 
 class CollectionTest extends PHPUnit_Framework_TestCase
 {
+    public function testChangeVersion()
+    {
+        $collection = new Collection('http://example.org/friends/');
+        $collection->setVersion('2.0');
+
+        $this->assertSame(
+            '{"collection":{"version":"2.0","href":"http:\/\/example.org\/friends\/"}}',
+            (string)$collection
+        );
+    }
+
+    public function testAddMultipleQueries()
+    {
+        $query = new Property\Query('http://example.org/friends/search', 'search', null, 'Search');
+        $query->addData(new Property\Data('search'));
+
+        $query2 = clone $query;
+
+        $collection = new Collection('http://example.org/friends/');
+        $collection->addQuerySet([$query, $query2]);
+
+        $result = json_decode($collection, true);
+        $this->assertEquals(
+            $result['collection']['queries'],
+            [$query->toArray(), $query2->toArray()]
+        );
+    }
+
     public function testFixtureMinimal()
     {
         $collection = new Collection('http://example.org/friends/');

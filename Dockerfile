@@ -10,6 +10,8 @@ ENV PATH $PATH:/opt/vendor/bin
 
 RUN cd .. \
   && php -r "readfile('https://getcomposer.org/installer');" | php \
-  && apt-get update && apt-get install -y zlib1g-dev \
+  && apt-get update && apt-get install -y zlib1g-dev git \
   && docker-php-ext-install zip \
-  && php composer.phar require phpunit/phpunit zerkalica/phpcs:dev-master
+  && pecl install xdebug \
+  && echo "zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20131226/xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini \
+  && php composer.phar require --prefer-source phpunit/phpunit zerkalica/phpcs:dev-master

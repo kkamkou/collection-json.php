@@ -8,7 +8,7 @@ PHP implementation of the Collection+JSON [specification](http://amundsen.com/me
 Examples of media type in use [can be found here](http://amundsen.com/media-types/collection/examples/).
 
 ## Example
-More examples are located in the ```CollectioTest.php``` test file
+More examples are located in the ```CollectionTest.php``` test file
 
 ```php
 use \CollectionJson\Collection;
@@ -30,14 +30,13 @@ echo $collection;
 ```sh
 [sudo] docker build .
 [sudo] docker run -v "`pwd`":/opt/collection-json.php IMAGE_ID phpcs --standard=psr2 CollectionJson
-[sudo] docker run -v "`pwd`":/opt/collection-json.php IMAGE_ID phpunit -c tests/phpunit.xml ./
+[sudo] docker run -v "`pwd`":/opt/collection-json.php IMAGE_ID phpunit -c tests/phpunit.xml tests
 ```
 
 ## Tests
 ```sh
 phpcs --standard=psr2 CollectionJson
-cd tests
-phpunit ./
+phpunit -c tests/phpunit.xml tests
 ```
 
 ## License
