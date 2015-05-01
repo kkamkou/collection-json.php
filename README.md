@@ -26,6 +26,19 @@ $collection->addItem($item);
 echo $collection;
 ```
 
+## Signatures
+```php
+\CollectionJson\Collection($href);
+
+\CollectionJson\Collection\Item($href, array $setWithData = array(), array $setWithLinks = array());
+\CollectionJson\Collection\Template(array $setWithData = array());
+\CollectionJson\Collection\Error($title = null, $code = null, $message = null);
+
+\CollectionJson\Property\Data($name, $value = null, $prompt = null);
+\CollectionJson\Property\Link($href, $rel, $name = null, $render = null, $prompt = null);
+\CollectionJson\Property\Query($href, $rel, $name = null, $prompt = null, array $data = array());
+```
+
 ## Docker
 ```sh
 [sudo] docker build .
