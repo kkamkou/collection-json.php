@@ -90,7 +90,7 @@ class Data implements ArrayConvertible
     }
 
     /** @return array */
-    public function __toArray()
+    public function toArray()
     {
         $required = array('name' => $this->getName());
         return $required + array_filter(

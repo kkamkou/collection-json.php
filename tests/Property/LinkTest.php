@@ -42,7 +42,7 @@ class LinkTest extends \PHPUnit_Framework_TestCase
         $obj = new CollectionJson\Property\Link(
             'http://example.com', 'homepage', 'My Homepage', 'link', 'Link to the homepage'
         );
-        $result = $obj->__toArray();
+        $result = $obj->toArray();
         foreach (array('href', 'rel', 'name', 'render', 'prompt') as $key) {
             $this->assertArrayHasKey($key, $result);
         }
@@ -51,7 +51,7 @@ class LinkTest extends \PHPUnit_Framework_TestCase
     public function testToArrayWithNulls()
     {
         $obj = new CollectionJson\Property\Link('http://example.com', 'homepage');
-        $result = $obj->__toArray();
+        $result = $obj->toArray();
         foreach (array('name', 'render', 'prompt') as $key) {
             $this->assertFalse(array_key_exists($key, $result));
         }

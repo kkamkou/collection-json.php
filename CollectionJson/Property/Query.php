@@ -144,14 +144,14 @@ class Query implements ArrayConvertible
     }
 
     /** @return array */
-    public function __toArray()
+    public function toArray()
     {
         $required = array('href' => $this->getHref(), 'rel' => $this->getRel());
 
         if (count($this->data)) {
             $required['data'] = array();
             foreach ($this->data as $data) {
-                $required['data'][] = $data->__toArray();
+                $required['data'][] = $data->toArray();
             }
         }
 

@@ -8,7 +8,7 @@ PHP implementation of the Collection+JSON [specification](http://amundsen.com/me
 Examples of media type in use [can be found here](http://amundsen.com/media-types/collection/examples/).
 
 ## Example
-More examples are located in the ```CollectioTest.php``` test file
+More examples are located in the ```CollectionTest.php``` test file
 
 ```php
 use \CollectionJson\Collection;
@@ -26,17 +26,36 @@ $collection->addItem($item);
 echo $collection;
 ```
 
+## Signatures
+```php
+\CollectionJson\Collection($href);
+
+\CollectionJson\Collection\Item($href, array $setWithData = array(), array $setWithLinks = array());
+\CollectionJson\Collection\Template(array $setWithData = array());
+\CollectionJson\Collection\Error($title = null, $code = null, $message = null);
+
+\CollectionJson\Property\Data($name, $value = null, $prompt = null);
+\CollectionJson\Property\Link($href, $rel, $name = null, $render = null, $prompt = null);
+\CollectionJson\Property\Query($href, $rel, $name = null, $prompt = null, array $data = array());
+```
+
+## Docker
+```sh
+[sudo] docker build .
+[sudo] docker run -v "`pwd`":/opt/collection-json.php IMAGE_ID phpcs --standard=psr2 CollectionJson
+[sudo] docker run -v "`pwd`":/opt/collection-json.php IMAGE_ID phpunit -c tests/phpunit.xml tests
+```
+
 ## Tests
 ```sh
 phpcs --standard=psr2 CollectionJson
-cd tests
-phpunit ./
+phpunit -c tests/phpunit.xml tests
 ```
 
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2013 Kanstantsin Kamkou
+Copyright (c) 2013-2015 Kanstantsin Kamkou
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

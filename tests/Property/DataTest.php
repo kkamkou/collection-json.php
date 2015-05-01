@@ -21,7 +21,7 @@ class DataTest extends \PHPUnit_Framework_TestCase
     public function testToArrayWithoutNulls()
     {
         $obj = new CollectionJson\Property\Data('fieldName', 'value', 'Test value');
-        $result = $obj->__toArray();
+        $result = $obj->toArray();
         foreach (array('name', 'value', 'prompt') as $key) {
             $this->assertArrayHasKey($key, $result);
         }
@@ -30,7 +30,7 @@ class DataTest extends \PHPUnit_Framework_TestCase
     public function testToArrayWithNulls()
     {
         $obj = new CollectionJson\Property\Data('fieldName');
-        $result = $obj->__toArray();
+        $result = $obj->toArray();
         foreach (array('prompt') as $key) {
             $this->assertFalse(array_key_exists($key, $result));
         }

@@ -139,7 +139,7 @@ class Link implements ArrayConvertible
     }
 
     /** @return array */
-    public function __toArray()
+    public function toArray()
     {
         $required = array('href' => $this->getHref(), 'rel' => $this->getRel());
         return $required + array_filter(

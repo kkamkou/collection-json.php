@@ -15,7 +15,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
     public function testToArrayWithoutNulls()
     {
         $obj = new CollectionJson\Collection\Error('not found', 404, 'Example message');
-        $result = $obj->__toArray();
+        $result = $obj->toArray();
         foreach (array('code', 'message', 'title') as $key) {
             $this->assertArrayHasKey($key, $result);
             $this->assertTrue(is_string($result[$key]));
@@ -25,7 +25,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
     public function testToArrayWithNulls()
     {
         $obj = new CollectionJson\Property\Data('fieldName');
-        $result = $obj->__toArray();
+        $result = $obj->toArray();
         foreach (array('code', 'message') as $key) {
             $this->assertFalse(array_key_exists($key, $result));
         }

@@ -1,6 +1,6 @@
 {
   "name": "kkamkou/collection-json.php",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "PHP implementation of the Collection+JSON",
   "type": "library",
   "homepage": "http://github.com/kkamkou/collection-json.php",
@@ -18,7 +18,8 @@
     }
   ],
   "require": {
-    "php": ">=5.3"
+    "php": ">=5.3",
+    "ext-json": "*"
   },
   "autoload": {
     "psr-0": {

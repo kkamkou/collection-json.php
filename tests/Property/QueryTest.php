@@ -30,7 +30,7 @@ class QueryTest extends \PHPUnit_Framework_TestCase
             'http://example.com/search', 'search', 'Search', 'Search page', array($data)
         );
 
-        $result = $obj->__toArray();
+        $result = $obj->toArray();
         foreach (array('href', 'rel', 'name', 'data', 'prompt') as $key) {
             $this->assertArrayHasKey($key, $result);
         }
@@ -39,7 +39,7 @@ class QueryTest extends \PHPUnit_Framework_TestCase
     public function testToArrayWithNulls()
     {
         $obj = new CollectionJson\Property\Query('http://example.com', 'homepage');
-        $result = $obj->__toArray();
+        $result = $obj->toArray();
         foreach (array('name', 'data', 'prompt') as $key) {
             $this->assertFalse(array_key_exists($key, $result));
         }

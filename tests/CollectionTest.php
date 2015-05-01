@@ -5,6 +5,34 @@ use \CollectionJson\Property;
 
 class CollectionTest extends PHPUnit_Framework_TestCase
 {
+    public function testChangeVersion()
+    {
+        $collection = new Collection('http://example.org/friends/');
+        $collection->setVersion('2.0');
+
+        $this->assertSame(
+            '{"collection":{"version":"2.0","href":"http:\/\/example.org\/friends\/"}}',
+            (string)$collection
+        );
+    }
+
+    public function testAddMultipleQueries()
+    {
+        $query = new Property\Query('http://example.org/friends/search', 'search', null, 'Search');
+        $query->addData(new Property\Data('search'));
+
+        $query2 = clone $query;
+
+        $collection = new Collection('http://example.org/friends/');
+        $collection->addQuerySet([$query, $query2]);
+
+        $result = json_decode($collection, true);
+        $this->assertEquals(
+            $result['collection']['queries'],
+            [$query->toArray(), $query2->toArray()]
+        );
+    }
+
     public function testFixtureMinimal()
     {
         $collection = new Collection('http://example.org/friends/');
@@ -149,7 +177,7 @@ class CollectionTest extends PHPUnit_Framework_TestCase
         $collection = new Collection('http://example.com');
         $collection->setError($error);
         $output = json_decode($collection, true);
-        $this->assertEquals($output['collection']['error'], $error->__toArray());
+        $this->assertEquals($output['collection']['error'], $error->toArray());
 
         $collection->setError(new Collection\Error('An error'));
         $output = json_decode($collection, true);
@@ -160,6 +188,6 @@ class CollectionTest extends PHPUnit_Framework_TestCase
     {
         $json = file_get_contents(__DIR__ . "/_fixtures/{$name}.json");
         $json = json_decode($json, true);
-        $this->assertEquals($json, $mixed->__toArray());
+        $this->assertEquals($json, $mixed->toArray());
     }
 }
