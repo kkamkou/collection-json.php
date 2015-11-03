@@ -1,5 +1,6 @@
 script:
 language: php
+sudo: false
 php:
   - 5.3
   - 5.4
@@ -17,7 +18,7 @@ script:
   - phpunit --configuration tests/phpunit.xml tests
 
 after_script:
-  - php vendor/bin/coveralls -v
+  - COVERALLS_REPO_TOKEN=tFsvcBK2ZlgFfsMOeZdme35dyddSjPMS6 php vendor/bin/coveralls -v
 
 notifications:
   slack:
