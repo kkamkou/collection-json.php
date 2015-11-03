@@ -24,12 +24,12 @@ class CollectionTest extends PHPUnit_Framework_TestCase
         $query2 = clone $query;
 
         $collection = new Collection('http://example.org/friends/');
-        $collection->addQuerySet([$query, $query2]);
+        $collection->addQuerySet(array($query, $query2));
 
         $result = json_decode($collection, true);
         $this->assertEquals(
             $result['collection']['queries'],
-            [$query->toArray(), $query2->toArray()]
+            array($query->toArray(), $query2->toArray())
         );
     }
 

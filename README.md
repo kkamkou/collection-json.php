@@ -2,6 +2,7 @@ Collection+JSON
 ===================
 
 ![Build Status](https://travis-ci.org/kkamkou/collection-json.php.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/kkamkou/collection-json.php/badge.svg?branch=master&service=github)](https://coveralls.io/github/kkamkou/collection-json.php?branch=master)
 
 PHP implementation of the Collection+JSON [specification](http://amundsen.com/media-types/collection/format/)
 
@@ -41,9 +42,9 @@ echo $collection;
 
 ## Docker
 ```sh
-[sudo] docker build .
-[sudo] docker run -v "`pwd`":/opt/collection-json.php IMAGE_ID phpcs --standard=psr2 CollectionJson
-[sudo] docker run -v "`pwd`":/opt/collection-json.php IMAGE_ID phpunit -c tests/phpunit.xml tests
+[sudo] docker build -t collection-json.php .
+[sudo] docker run -v "$PWD:/opt/collection-json.php collection-json.php phpcs --standard=psr2 CollectionJson
+[sudo] docker run -v "$PWD:/opt/collection-json.php collection-json.php phpunit -c tests/phpunit.xml tests
 ```
 
 ## Tests

@@ -1,7 +1,26 @@
-script: phpunit --configuration tests/phpunit.xml tests
+script:
 language: php
+sudo: false
 php:
   - 5.3
   - 5.4
   - 5.5
+  - 5.6
+  - hhvm
 
+before_script:
+  - curl -s http://getcomposer.org/installer | php
+  - php composer.phar install --no-interaction
+
+script:
+  - php vendor/bin/phpcs --standard=psr2 CollectionJson
+  - mkdir -p build/logs
+  - phpunit --configuration tests/phpunit.xml tests
+
+after_script:
+  - php vendor/bin/coveralls -v
+
+notifications:
+  slack:
+    on_success: never
+    on_failure: always
