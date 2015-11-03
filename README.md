@@ -2,6 +2,7 @@ Collection+JSON
 ===================
 
 ![Build Status](https://travis-ci.org/kkamkou/collection-json.php.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/kkamkou/collection-json.php/badge.svg?branch=master&service=github)](https://coveralls.io/github/kkamkou/collection-json.php?branch=master)
 
 PHP implementation of the Collection+JSON [specification](http://amundsen.com/media-types/collection/format/)
 
