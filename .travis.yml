@@ -13,6 +13,7 @@ before_script:
   - php composer.phar install --dev --no-interaction
 
 script:
+  - php vendor/bin/phpcs --standard=psr2 CollectionJson
   - php vendor/bin/phpunit --configuration tests/phpunit.xml tests
 
 after_script:
