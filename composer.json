@@ -22,7 +22,7 @@
     "ext-json": "*"
   },
   "require-dev": {
-    "satooshi/php-coveralls": "0.6.*",
+    "satooshi/php-coveralls": "dev-master",
     "squizlabs/php_codesniffer": "2.3.*"
   },
   "autoload": {

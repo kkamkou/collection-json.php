@@ -18,7 +18,7 @@ script:
   - phpunit --configuration tests/phpunit.xml tests
 
 after_script:
-  - COVERALLS_REPO_TOKEN=tFsvcBK2ZlgFfsMOeZdme35dyddSjPMS6 php vendor/bin/coveralls -v
+  - php vendor/bin/coveralls -v
 
 notifications:
   slack:
