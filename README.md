@@ -42,9 +42,9 @@ echo $collection;
 
 ## Docker
 ```sh
-[sudo] docker build .
-[sudo] docker run -v "`pwd`":/opt/collection-json.php IMAGE_ID phpcs --standard=psr2 CollectionJson
-[sudo] docker run -v "`pwd`":/opt/collection-json.php IMAGE_ID phpunit -c tests/phpunit.xml tests
+[sudo] docker build -t collection-json.php .
+[sudo] docker run -v "$PWD:/opt/collection-json.php collection-json.php phpcs --standard=psr2 CollectionJson
+[sudo] docker run -v "$PWD:/opt/collection-json.php collection-json.php phpunit -c tests/phpunit.xml tests
 ```
 
 ## Tests
