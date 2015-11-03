@@ -10,13 +10,12 @@ php:
   - hhvm
 
 before_script:
-  - phpenv config-add xdebug.ini
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --no-interaction
 
 script:
   - php vendor/bin/phpcs --standard=psr2 CollectionJson
-  - php vendor/bin/phpunit --configuration tests/phpunit.xml tests
+  - phpunit --configuration tests/phpunit.xml tests
 
 after_script:
   - php vendor/bin/coveralls
