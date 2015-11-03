@@ -19,7 +19,7 @@ script:
   - phpunit --configuration tests/phpunit.xml tests
 
 after_script:
-  - php vendor/bin/coveralls --config $TRAVIS_BUILD_DIR/.coveralls.yml -v
+  - php vendor/bin/coveralls --config .coveralls.yml -v
 
 notifications:
   slack:
